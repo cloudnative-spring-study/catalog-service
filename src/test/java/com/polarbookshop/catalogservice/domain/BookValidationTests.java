@@ -4,7 +4,6 @@ import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -15,16 +14,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class BookValidationTests {
     private static Validator validator;
 
-
     @BeforeAll
-    static void setUp(){
+    static void setUp() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
     }
 
     @Test
-    void whenAllFieldsCorrectThenValidationSucceeds(){
-        var book = new Book("1234567890", "Title", "Author", 9.90);
+    void whenAllFieldsCorrectThenValidationSucceeds() {
+        var book = Book.of("1234567890", "Title", "Author", 9.90);
 
         Set<ConstraintViolation<Book>> violations = validator.validate(book);
 
@@ -32,8 +30,8 @@ public class BookValidationTests {
     }
 
     @Test
-    void whenIsbnDefinedButIncorrectThenValidationFails(){
-        var book = new Book("a1293822", "Title", "Author", 9.90);
+    void whenIsbnDefinedButIncorrectThenValidationFails() {
+        var book = Book.of("a1293822", "Title", "Author", 9.90);
 
         Set<ConstraintViolation<Book>> violations = validator.validate(book);
 
