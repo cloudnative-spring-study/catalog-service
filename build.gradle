@@ -18,6 +18,7 @@ repositories {
 ext {
   set('springCloudVersion', "2023.0.1")
   set('testcontainersVersion', "1.19.8")
+  set('testKeyCloakVersion', "2.3.0")
 }
 
 configurations {
@@ -40,14 +41,18 @@ compileTestJava {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	implementation 'org.springframework.cloud:spring-cloud-starter-config'
-	implementation 'org.springframework.retry:spring-retry'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	implementation 'org.springframework.retry:spring-retry'
 	implementation 'org.flywaydb:flyway-core'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-webflux'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'org.testcontainers:junit-jupiter'
+	testImplementation "com.github.dasniko:testcontainers-keycloak:${testKeyCloakVersion}"
 	testImplementation "org.testcontainers:postgresql"
 
 	runtimeOnly 'org.postgresql:postgresql'
