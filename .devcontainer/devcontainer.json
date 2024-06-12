@@ -11,14 +11,18 @@
 			"omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions https://github.com/zsh-users/zsh-syntax-highlighting https://github.com/zdharma-continuum/fast-syntax-highlighting"
 		},
 		"ghcr.io/schlich/devcontainer-features/powerlevel10k:1": {},
-		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
+		"ghcr.io/audacioustux/devcontainers/tilt:1": {},
+		"ghcr.io/gickis/devcontainer-features/kubeconform:1": {}
 	},
 	"customizations": {
 		"vscode": {
 			"extensions": [
 				"vmware.vscode-boot-dev-pack",
 				"vscjava.vscode-gradle",
-				"vscjava.vscode-java-pack"
+				"vscjava.vscode-java-pack",
+				"ms-kubernetes-tools.vscode-kubernetes-tools"
 			]
 		}
 	}

@@ -23,8 +23,6 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.hibernate.validator.internal.engine.valueextraction.ValueExtractorDescriptor.Key;
-
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("integration")
 @Testcontainers
@@ -43,13 +41,13 @@ class CatalogServiceApplicationTests {
 	@DynamicPropertySource
 	static void dynamicProperties(DynamicPropertyRegistry registry) {
 		registry.add("spring.security.oauth2.resourceserver.jwt.issuer-uri",
-				() -> keycloakContainer.getAuthServerUrl() + "realms/PolarBookshop");
+				() -> keycloakContainer.getAuthServerUrl() + "/realms/PolarBookshop");
 	}
 
 	@BeforeAll
 	static void generateAccessTokens() {
 		WebClient webClient = WebClient.builder()
-				.baseUrl(keycloakContainer.getAuthServerUrl() + "realms/PolarBookshop/protocol/openid-connect/token")
+				.baseUrl(keycloakContainer.getAuthServerUrl() + "/realms/PolarBookshop/protocol/openid-connect/token")
 				.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 				.build();
 
