@@ -5,7 +5,6 @@ resources:
   - deployment.yml
   - service.yml
 
-
 configMapGenerator:
   - name: catalog-config
     files:
